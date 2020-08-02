@@ -24,3 +24,7 @@ script:
 
 after_success:
 - if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TYPE" == "docker" ]; then docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASS"; docker tag musicbot justsomebots/musicbot:$TRAVIS_BRANCH; docker push justsomebots/musicbot; fi;
+
+
+- name: SonarCloud Scan
+  uses: SonarSource/sonarcloud-github-action@v1.3
